@@ -47,4 +47,25 @@ importers:
 
     - `packages/package2` — drugi pakiet w folderze `packages`.
 
+## Dodawanie własnych skryptów do `package.json`:
 
+Aby dodać własne skrypty do projektu, należy zedytować sekcję `scripts` w pliku `package.json`. Skrypty te można uruchamiać za pomocą komendy `pnpm run <nazwa-skryptu>`. Przykład:
+
+```json
+"scripts": {
+  "test": "jest",
+  "start": "node index.js",
+  "build": "webpack --config webpack.config.js"
+}
+```
+Analiza:
+
+- `test` - uruchamia testy (np. za pomocą `jest`).
+- `start` - uruchamia aplikację (np. za pomocą `node`).
+- `build` - buduje aplikację (np. za pomocą `webpack`).
+
+Uruchamianie skryptu:
+
+```bash
+pnpm run start
+```

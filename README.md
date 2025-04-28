@@ -7,3 +7,44 @@ Practical examples and experiments with pnpm.
 
 Dodatkowo, `pnpm` wspiera `monorepo` (wielomodułowe projekty), oferując zarządzanie zależnościami między pakietami w ramach jednego repozytorium. Jest kompatybilny z `npm` i zapewnia lepsze zarządzanie wersjami.
 
+## `pnpm-lock.yaml`
+
+Plik `pnpm-lock.yaml` jest kluczowym elementem w projekcie `PNPM`, którego głównym zadaniem jest śledzenie zainstalowanych pakietów i ich zależności, zapewniając tym samym spójność wersji pomiędzy różnymi instalacjami projektu: 
+
+```yaml
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .: {}
+
+  packages/package1: {}
+
+  packages/package2: {}
+```
+
+1. `lockfileVersion`
+
+    `lockfileVersion: '9.0'` określa wersję formatu pliku `lockfile`. Wersja `9.0` jest używana w najnowszych wersjach `PNPM`, zapewniając optymalizacje i nowe funkcje.
+
+2. `settings`
+
+    `autoInstallPeers: true` sprawia, że `PNPM` automatycznie zainstaluje zależności typu `peer` (zależności wymagane przez inne pakiety), jeżeli jeszcze nie zostały zainstalowane w projekcie.
+
+    `excludeLinksFromLockfile: false` określa, czy linki symboliczne (`symlinks`) mają być zapisane w pliku `lockfile`. Gdy jest ustawione na `false`, linki będą uwzględnione w pliku.
+
+3. `importers`
+
+    Sekcja `importers` wskazuje, które katalogi w projekcie są zarządzane przez `PNPM` w ramach `workspace`. Dla bieżącego projektu są to:
+
+    - `.` — główny katalog repozytorium.
+
+    - `packages/package1` — pierwszy pakiet w folderze `packages`.
+
+    - `packages/package2` — drugi pakiet w folderze `packages`.
+
+
